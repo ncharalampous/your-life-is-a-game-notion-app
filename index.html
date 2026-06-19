@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Life is a Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <h1>Your Life is a Game</h1>
+
+  <div id="avatar-container">
+    <svg id="avatar-svg" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+
+      <defs>
+        <!-- A small repeating tile = the vintage floral wallpaper texture behind the lights -->
+        <pattern id="wallpaperPattern" width="14" height="14" patternUnits="userSpaceOnUse">
+          <rect width="14" height="14" fill="#e9ddc8" />
+          <circle cx="3" cy="3" r="1.4" fill="#caa583" />
+          <circle cx="10" cy="9" r="1.4" fill="#caa583" />
+        </pattern>
+      </defs>
+
+      <!-- WALL POSTER: our own take on a "string lights + hand-painted letters on
+           wallpaper" piece, inspired by the mood of the reference image but drawn
+           from scratch with our own pattern, layout and letters. -->
+      <g id="wall-poster">
+        <rect class="poster-frame" x="205" y="15" width="75" height="95" rx="3" />
+        <rect x="210" y="20" width="65" height="85" fill="url(#wallpaperPattern)" />
+
+        <!-- string lights wire -->
+        <path class="lights-wire" d="M210,28 Q220,20 230,28 Q240,36 250,28 Q260,20 270,28" />
+
+        <!-- light bulbs along the wire -->
+        <circle class="light-bulb light-red" cx="210" cy="28" r="2.3" />
+        <circle class="light-bulb light-green" cx="220" cy="21" r="2.3" />
+        <circle class="light-bulb light-blue" cx="230" cy="28" r="2.3" />
+        <circle class="light-bulb light-yellow" cx="240" cy="35" r="2.3" />
+        <circle class="light-bulb light-red" cx="250" cy="28" r="2.3" />
+        <circle class="light-bulb light-green" cx="260" cy="21" r="2.3" />
+        <circle class="light-bulb light-blue" cx="270" cy="28" r="2.3" />
+
+        <!-- second string of lights, draped above the second row of letters -->
+        <path class="lights-wire" d="M210,64 Q220,56 230,64 Q240,72 250,64 Q260,56 270,64" />
+        <circle class="light-bulb light-yellow" cx="210" cy="64" r="2.3" />
+        <circle class="light-bulb light-blue" cx="220" cy="57" r="2.3" />
+        <circle class="light-bulb light-red" cx="230" cy="64" r="2.3" />
+        <circle class="light-bulb light-green" cx="240" cy="71" r="2.3" />
+        <circle class="light-bulb light-yellow" cx="250" cy="64" r="2.3" />
+        <circle class="light-bulb light-blue" cx="260" cy="57" r="2.3" />
+        <circle class="light-bulb light-red" cx="270" cy="64" r="2.3" />
+
+        <!-- a few hand-painted letters, echoing the alphabet-wall vibe -->
+        <text class="poster-letter" x="218" y="52" transform="rotate(-6 218 52)">A</text>
+        <text class="poster-letter" x="240" y="50" transform="rotate(4 240 50)">B</text>
+        <text class="poster-letter" x="261" y="54" transform="rotate(-3 261 54)">C</text>
+        <text class="poster-letter" x="218" y="86" transform="rotate(5 218 86)">X</text>
+        <text class="poster-letter" x="240" y="84" transform="rotate(-4 240 84)">Y</text>
+        <text class="poster-letter" x="261" y="88" transform="rotate(6 261 88)">Z</text>
+
+        <!-- little paint drips under a couple of letters -->
+        <line class="paint-drip" x1="241" y1="51" x2="241" y2="58" />
+        <line class="paint-drip" x1="219" y1="87" x2="219" y2="93" />
+      </g>
+
+      <!-- LEGS -->
+      <rect class="legs" x="120" y="300" width="25" height="70" rx="8" />
+      <rect class="legs" x="155" y="300" width="25" height="70" rx="8" />
+      <ellipse class="shoes" cx="132" cy="375" rx="18" ry="8" />
+      <ellipse class="shoes" cx="167" cy="375" rx="18" ry="8" />
+
+      <!-- DESK + GEAR: drawn after the legs so it covers her ankles/feet,
+           like she's standing behind a desk. Each piece is its own group
+           with an id so script.js can show/hide it based on level. -->
+
+      <g id="gear-desk-base" style="display:none">
+        <rect class="desk-top" x="15" y="345" width="270" height="12" rx="2" />
+        <rect class="desk-front" x="15" y="357" width="270" height="38" rx="2" />
+      </g>
+
+      <g id="gear-monitor-a" style="display:none">
+        <rect class="monitor-stand" x="58" y="320" width="8" height="25" />
+        <rect class="monitor-screen" x="25" y="268" width="68" height="52" rx="3" />
+        <rect class="monitor-screen-inner" x="30" y="273" width="58" height="42" rx="2" />
+      </g>
+
+      <g id="gear-lamp" style="display:none">
+        <line class="lamp-arm" x1="105" y1="345" x2="105" y2="298" stroke-width="3" />
+        <path class="lamp-shade" d="M90,298 L120,298 L113,283 L97,283 Z" />
+        <circle class="lamp-base" cx="105" cy="346" r="6" />
+      </g>
+
+      <g id="gear-deskpad" style="display:none">
+        <rect class="deskpad" x="145" y="330" width="80" height="16" rx="4" />
+        <rect class="speaker" x="100" y="315" width="12" height="30" rx="3" />
+        <rect class="speaker" x="248" y="315" width="12" height="30" rx="3" />
+      </g>
+
+      <g id="gear-keyboard" style="display:none">
+        <rect class="keyboard" x="155" y="333" width="55" height="12" rx="2" />
+        <rect class="keyboard-keys" x="159" y="336" width="47" height="6" rx="1" />
+      </g>
+
+      <g id="gear-mouse" style="display:none">
+        <rect class="mouse" x="218" y="335" width="14" height="10" rx="4" />
+      </g>
+
+      <g id="gear-ipad" style="display:none">
+        <rect class="ipad" x="225" y="280" width="35" height="45" rx="4" />
+        <rect class="ipad-screen" x="229" y="284" width="27" height="37" rx="2" />
+      </g>
+
+      <g id="gear-tower" style="display:none">
+        <rect class="tower-body" x="12" y="298" width="22" height="55" rx="3" />
+        <circle class="tower-light" cx="23" cy="340" r="3" />
+      </g>
+
+      <g id="gear-monitor-b" style="display:none">
+        <rect class="monitor-stand" x="253" y="320" width="8" height="25" />
+        <rect class="monitor-screen" x="220" y="268" width="68" height="52" rx="3" />
+        <rect class="monitor-screen-inner" x="225" y="273" width="58" height="42" rx="2" />
+      </g>
+
+      <!-- HOODIE BODY -->
+      <path class="hoodie" d="M100,160 Q150,140 200,160 L210,300 Q150,320 90,300 Z" />
+
+      <!-- ARMS -->
+      <path class="hoodie" d="M95,180 Q70,210 85,250 L105,245 Q100,210 115,185 Z" />
+      <path class="hoodie" d="M205,180 Q230,210 215,250 L195,245 Q200,210 185,185 Z" />
+
+      <!-- HOODIE POCKET -->
+      <rect class="hoodie-dark" x="125" y="240" width="50" height="20" rx="6" />
+
+      <!-- HOOD / NECKLINE -->
+      <path class="hoodie-dark" d="M120,155 Q150,175 180,155 L175,145 Q150,160 125,145 Z" />
+
+      <!-- LONG HAIR (drawn behind the head, flows down past the shoulders) -->
+      <path class="hair-brown" d="M150,50 Q105,50 100,110 Q95,160 110,205 Q130,170 138,120 Q145,95 150,90 Z" />
+      <path class="hair-blonde" d="M150,50 Q195,50 200,110 Q205,160 190,205 Q170,170 162,120 Q155,95 150,90 Z" />
+
+      <!-- HEAD (sits on top of the hair, covering its center) -->
+      <circle class="skin" cx="150" cy="100" r="42" />
+
+      <!-- FACE -->
+      <circle class="eye" cx="135" cy="100" r="4" />
+      <circle class="eye" cx="165" cy="100" r="4" />
+      <path class="mouth" d="M138,118 Q150,126 162,118" />
+
+      <!-- BANGS (front fringe, drawn last so it sits over the forehead) -->
+      <path class="hair-brown" d="M115,76 Q130,60 150,64 L150,79 Q132,74 117,82 Z" />
+      <path class="hair-blonde" d="M185,76 Q170,60 150,64 L150,79 Q168,74 183,82 Z" />
+
+      <!-- OLD LAPTOP: her starting "weapon" -->
+      <g id="laptop-old" class="weapon">
+        <rect class="laptop-base" x="115" y="225" width="70" height="8" rx="2" />
+        <rect class="laptop-screen" x="118" y="190" width="64" height="38" rx="3" />
+        <rect class="laptop-screen-inner" x="122" y="194" width="56" height="30" rx="2" />
+      </g>
+
+      <!-- MACBOOK: unlocked at level 8, hidden for now -->
+      <g id="laptop-macbook" class="weapon" style="display:none">
+        <rect class="macbook-base" x="115" y="225" width="70" height="8" rx="2" />
+        <rect class="macbook-screen" x="118" y="190" width="64" height="38" rx="3" />
+      </g>
+
+    </svg>
+  </div>
+
+  <div id="stats">
+    <p>Level: <span id="level">1</span></p>
+    <p>XP: <span id="xp">0</span></p>
+  </div>
+
+  <!-- One button per activity. Each calls addXP() with that activity's value
+       from XP_VALUES in script.js, so the numbers only live in one place. -->
+  <div id="xp-buttons">
+    <button onclick="addXP(XP_VALUES.dailyLogin)">Daily login (+100)</button>
+    <button onclick="addXP(XP_VALUES.workout)">Workout (+300)</button>
+    <button onclick="addXP(XP_VALUES.reading)">Reading (+75)</button>
+    <button onclick="addXP(XP_VALUES.pomodoro)">Pomodoro session (+80)</button>
+    <button onclick="addXP(XP_VALUES.learning)">Learned something new (+200)</button>
+    <button onclick="addXP(XP_VALUES.gitStreak)">Git streak (+30)</button>
+    <button onclick="addXP(XP_VALUES.newRepoProgram)">New repo program (+70)</button>
+    <button onclick="addXP(XP_VALUES.math)">Discrete math (+60)</button>
+    <button onclick="addXP(XP_VALUES.structures)">Data structures (+50)</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+/* Basic page reset and centering */
+body {
+  font-family: sans-serif;
+  background-color: #f4f1ea;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  padding: 40px 0;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* This box will hold our SVG avatar drawing */
+#avatar-container {
+  width: 300px;
+  height: 400px;
+  background-color: #0f4c5c; /* petrol blue */
+  border: 2px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* The SVG fills its container exactly */
+#avatar-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Avatar colors ----
+   These classes are set on shapes inside the SVG (see index.html).
+   Changing a color here updates the avatar everywhere that class is used. */
+.skin { fill: #f2c9a0; }
+
+.hair-brown { fill: #6b4423; }
+.hair-blonde { fill: #e8c171; }
+
+.hoodie { fill: #b9a8d9; }
+.hoodie-dark { fill: #9483c0; }
+
+.legs { fill: #4a4a4a; }
+.shoes { fill: #2e2e2e; }
+
+.eye { fill: #2e2e2e; }
+.mouth {
+  fill: none;
+  stroke: #2e2e2e;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.laptop-base, .macbook-base { fill: #8a8a8a; }
+.laptop-screen { fill: #5a5a5a; }
+.laptop-screen-inner { fill: #aee1f9; }
+.macbook-screen { fill: #d8d8d8; }
+
+/* ---- Desk + gear colors ---- */
+.desk-top { fill: #c98a4b; }
+.desk-front { fill: #a86b35; }
+
+.monitor-stand { fill: #555555; }
+.monitor-screen { fill: #333333; }
+.monitor-screen-inner { fill: #7fd1f2; }
+
+.lamp-arm { stroke: #444444; }
+.lamp-shade { fill: #e8c171; }
+.lamp-base { fill: #444444; }
+
+.deskpad { fill: #6b6b6b; }
+.speaker { fill: #333333; }
+
+.keyboard { fill: #444444; }
+.keyboard-keys { fill: #6a6a6a; }
+
+.mouse { fill: #444444; }
+
+.ipad { fill: #dddddd; }
+.ipad-screen { fill: #9fd8f5; }
+
+.tower-body { fill: #555555; }
+.tower-light { fill: #6fe86f; }
+
+/* ---- Wall poster ---- */
+.poster-frame { fill: #0b0b0f; }
+
+.lights-wire {
+  fill: none;
+  stroke: #2a2a2a;
+  stroke-width: 1;
+}
+
+.light-bulb { stroke: #2a2a2a; stroke-width: 0.5; }
+.light-red { fill: #e8453c; }
+.light-green { fill: #4caf50; }
+.light-blue { fill: #4aa3df; }
+.light-yellow { fill: #f1c40f; }
+
+.poster-letter {
+  font-family: "Brush Script MT", cursive;
+  font-weight: bold;
+  font-size: 16px;
+  fill: #1a1a1a;
+}
+
+.paint-drip {
+  stroke: #1a1a1a;
+  stroke-width: 1;
+  stroke-linecap: round;
+}
+
+#stats {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: center;
+}
+
+#xp-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 420px;
+}
+
+#xp-buttons button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #0f4c5c;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#xp-buttons button:hover {
+  background-color: #136a80;
+}
