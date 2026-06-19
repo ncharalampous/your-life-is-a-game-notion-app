@@ -82,6 +82,13 @@ h1 {
 .tower-body { fill: #555555; }
 .tower-light { fill: #6fe86f; }
 
+/* ---- Monstera plant ---- */
+.plant-pot { fill: #8a5a3c; }
+.plant-pot-rim { fill: #6e4429; }
+.plant-stem { stroke: #3c6b40; stroke-width: 2; fill: none; }
+.plant-leaf { fill: #4f8a52; }
+.plant-leaf-dark { fill: #3c6b40; }
+
 /* ---- Wall poster ---- */
 .poster-frame { fill: #0b0b0f; }
 
