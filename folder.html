@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Open Me</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="folder-style.css" />
+</head>
+<body>
+
+  <div id="scene">
+
+    <div id="photo-frame">
+      <img id="photo" src="folder-photo.jpg" alt="our photo" />
+    </div>
+
+    <div id="folder" onclick="toggleFolder()">
+      <div class="pixel-box" id="folder-tab"></div>
+      <div class="pixel-box" id="folder-back"></div>
+      <div class="pixel-box" id="folder-front">
+        <div id="heart-sticker"></div>
+      </div>
+    </div>
+
+    <p id="hint">click the folder!</p>
+
+  </div>
+
+  <script src="folder-script.js"></script>
+</body>
+</html>

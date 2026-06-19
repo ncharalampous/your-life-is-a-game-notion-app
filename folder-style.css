@@ -1,0 +1,148 @@
+/* Pixel-art folder widget. Own file, doesn't touch the avatar or bestie
+   stylesheets. */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#5c94fc 0%, #5c94fc 70%, #76c442 70%, #76c442 100%);
+  font-family: "Press Start 2P", monospace;
+  overflow: hidden;
+}
+
+#scene {
+  position: relative;
+  width: 260px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* shared "pixelated" look: hard square corners + notched corners (no
+   anti-aliased curves) + thick flat outline + a hard offset shadow instead
+   of a blurred one */
+.pixel-box {
+  position: absolute;
+  border: 5px solid #2b1d0e;
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px
+  );
+}
+
+#photo-frame {
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  background-color: #fff8e6;
+  border: 6px solid #2b1d0e;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  opacity: 0;
+  transform: translateY(10px) scale(0.85);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+  z-index: 1;
+}
+
+#photo-frame.visible {
+  opacity: 1;
+  transform: translateY(-78px) scale(1);
+}
+
+#photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  image-rendering: auto; /* the photo itself stays sharp - only the folder is pixelated */
+}
+
+#folder {
+  position: relative;
+  width: 220px;
+  height: 150px;
+  cursor: pointer;
+  z-index: 2;
+  perspective: 700px;
+}
+
+#folder-tab {
+  width: 80px;
+  height: 28px;
+  top: -20px;
+  left: 8px;
+  background-color: #f0b429;
+  z-index: 1;
+}
+
+#folder-back {
+  width: 220px;
+  height: 150px;
+  top: 8px;
+  left: 6px;
+  background-color: #d99416;
+  z-index: 1;
+}
+
+#folder-front {
+  width: 220px;
+  height: 140px;
+  top: 14px;
+  left: 0;
+  background-color: #ffcf3f;
+  z-index: 3;
+  transform-origin: bottom center;
+  transition: transform 0.5s steps(8, end);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#folder.open #folder-front {
+  transform: rotateX(-120deg) translateY(-6px);
+}
+
+#heart-sticker {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 6px);
+  grid-template-rows: repeat(6, 6px);
+  transform: rotate(-6deg);
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.3));
+}
+
+#heart-sticker .px {
+  width: 6px;
+  height: 6px;
+  background-color: transparent;
+}
+
+#heart-sticker .px.on {
+  background-color: #ff3b5c;
+  outline: 1px solid #b3001f;
+}
+
+#hint {
+  position: absolute;
+  bottom: -36px;
+  font-size: 9px;
+  color: #fff8e6;
+  text-shadow: 2px 2px 0 #2b1d0e;
+  letter-spacing: 1px;
+}
+
+#folder.open ~ #hint,
+#folder.open + #hint {
+  opacity: 0;
+}
