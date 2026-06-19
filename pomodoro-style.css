@@ -1,0 +1,139 @@
+/* Flip-clock styled pomodoro timer. Kept in its own file so it never touches
+   style.css (your avatar) or bestie-style.css (her avatar). */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #0d0d0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  padding: 24px 0;
+}
+
+#clock-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tile-pair {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.flip-tile {
+  position: relative;
+  width: clamp(90px, 28vw, 160px);
+  height: clamp(110px, 36vw, 200px);
+  background-color: #1a1a1c;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+/* the crease line down the middle, like a real flip clock */
+.flip-tile::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background-color: #000;
+  opacity: 0.55;
+  z-index: 2;
+}
+
+.flip-tile span#minutes,
+.flip-tile span#seconds {
+  font-size: clamp(48px, 15vw, 92px);
+  font-weight: 700;
+  color: #cfcfcf;
+  line-height: 1;
+  z-index: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.mode-label {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #8a8a8a;
+  z-index: 3;
+}
+
+.colon {
+  font-size: clamp(36px, 10vw, 64px);
+  font-weight: 700;
+  color: #555;
+  padding-bottom: 10px;
+}
+
+#session-dots {
+  display: flex;
+  gap: 8px;
+  margin-top: 22px;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: #2a2a2a;
+}
+
+.dot.completed {
+  background-color: #e8453c; /* tomato red, because pomodoro = tomato */
+}
+
+#controls {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+#controls button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background-color: #1a1a1c;
+  color: #c7c7c7;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+#controls button:hover {
+  background-color: #28282b;
+}
+
+#controls button:active {
+  background-color: #333336;
+}
+
+#play-btn {
+  background-color: #e8453c;
+  color: #fff;
+}
+
+#play-btn:hover {
+  background-color: #d63b32;
+}

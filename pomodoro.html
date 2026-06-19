@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="pomodoro-style.css" />
+</head>
+<body>
+
+  <div id="clock-wrap">
+
+    <div class="tile-pair">
+      <div class="flip-tile">
+        <span id="minutes">25</span>
+        <span class="mode-label" id="mode-label">WORK</span>
+      </div>
+      <span class="colon">:</span>
+      <div class="flip-tile">
+        <span id="seconds">00</span>
+      </div>
+    </div>
+
+    <div id="session-dots"></div>
+
+    <div id="controls">
+      <button id="reset-btn" title="Reset">&#x27F2;</button>
+      <button id="play-btn" title="Start / Pause">&#9658;</button>
+      <button id="skip-btn" title="Skip to next">&#9197;</button>
+    </div>
+
+  </div>
+
+  <script src="pomodoro-script.js"></script>
+</body>
+</html>
