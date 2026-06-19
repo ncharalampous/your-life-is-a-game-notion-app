@@ -75,5 +75,31 @@ function addXP(amount) {
   console.log(`+${amount} XP -> total ${currentXP}, level ${calculateLevel(currentXP)}`);
 }
 
+// ---- Live sync with Notion ----
+// The Cloudflare Worker below queries the "Daily Quest Log" Notion database
+// and returns the sum of XP for every row where Done = true. Replace the
+// URL with your deployed Worker's URL once you've set it up (see
+// cloudflare-worker/wrangler.toml in this project for setup instructions).
+const XP_SYNC_URL = "https://your-life-is-a-game-xp.n-pcharalampous.workers.dev/xp";
+const SYNC_INTERVAL_MS = 30000; // re-check every 30s while the page is open
+
+async function syncXPFromNotion() {
+  try {
+    const res = await fetch(XP_SYNC_URL);
+    if (!res.ok) throw new Error(`Worker responded ${res.status}`);
+    const data = await res.json();
+    if (typeof data.xp === "number" && data.xp !== currentXP) {
+      currentXP = data.xp;
+      updateDisplay();
+    }
+  } catch (err) {
+    // If the Worker isn't set up yet (or the network call fails), fail
+    // quietly and keep whatever XP is already showing.
+    console.warn("XP sync skipped:", err.message);
+  }
+}
+
 // Sync the display as soon as the page loads.
 updateDisplay();
+syncXPFromNotion();
+setInterval(syncXPFromNotion, SYNC_INTERVAL_MS);
