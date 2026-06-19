@@ -19,7 +19,7 @@ body {
 #scene {
   position: relative;
   width: 260px;
-  height: 280px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -58,7 +58,7 @@ body {
 
 #photo-frame.visible {
   opacity: 1;
-  transform: translateY(-78px) scale(1);
+  transform: translateY(-90px) scale(1);
 }
 
 #photo {
@@ -74,7 +74,6 @@ body {
   height: 150px;
   cursor: pointer;
   z-index: 2;
-  perspective: 700px;
 }
 
 #folder-tab {
@@ -102,15 +101,15 @@ body {
   left: 0;
   background-color: #ffcf3f;
   z-index: 3;
-  transform-origin: bottom center;
-  transition: transform 0.5s steps(8, end);
+  transition: transform 0.45s steps(8, end), opacity 0.45s steps(8, end);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 #folder.open #folder-front {
-  transform: rotateX(-120deg) translateY(-6px);
+  transform: translate(-30px, -70px) rotate(-18deg);
+  opacity: 0;
 }
 
 #heart-sticker {
